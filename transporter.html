@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Transporter </title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body id="bod">
+
+<div class="center">
+	<label for="name">Name</label>
+	<input type="text" id="name"/>
+	<label for="page-number">Page Number</label>
+	<input type="number" id="pageNumber"/>
+	<button id="sendBtn">Send</button>
+</div>
+
+<div>
+	<h1 id="header1"> Enter 1: Return Home </h1>
+	<h1 id="header2"> Enter 2: Go to the About Page </h1>
+</div>
+
+
+<script type="text/javascript">
+        document.getElementById('sendBtn').onclick = function ()
+        {
+		  console.log("here");
+          var l = document.getElementById("pageNumber").value; 
+          console.log(l);
+          console.log("var la is of type " + typeof l); 
+            wrapitup(l); 
+            
+        }; 
+
+        function wrapitup(x) 
+        {
+            var output = x; 
+            var dynamicDiv = document.createElement("div");
+            var newp = document.createElement("p");             
+            var newPMessage = "you entered: " + output ; 
+            var nodeToPaint = document.createTextNode(newPMessage);
+            newp.appendChild(nodeToPaint);
+            dynamicDiv.appendChild(newp);
+            dynamicDiv.setAttribute("id", x); 
+            var element = document.getElementById("bod");
+			dynamicDiv.className = "center";
+            element.appendChild(dynamicDiv);
+            createLink(x);
+        }
+        function createLink(wordInTheLink) 
+        {
+          var a = document.createElement('a');
+          var personsName = document.getElementById("name").value; 
+          var msg = "go here now, " + personsName;
+          a.title = msg;
+		  a.id = "link";
+		  a.className = "center";
+
+          var l = "ok, " + personsName + ", click here to go to page #" + wordInTheLink;
+          var linkText = document.createTextNode(l);
+          a.appendChild(linkText); 
+		  
+		  if (wordInTheLink == 1){
+		      a.href = "home.html";
+		  }
+		  
+		  else if (wordInTheLink == 2){
+			  a.href = "about.html";
+		  }
+          
+          document.body.appendChild(a); 
+		  
+
+        }
+</script>
+
+
+
+
+</body>
+</html>
+	
